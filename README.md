@@ -1,1 +1,751 @@
-# hotel-golden-petals
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hotel Golden Petals — Greater Noida</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8D49A;
+    --gold-dark: #8B6914;
+    --ivory: #FAF7F2;
+    --warm-white: #FFFEF9;
+    --charcoal: #1E1E1E;
+    --stone: #4A4540;
+    --mist: #EDE9E0;
+    --r-img: 20px;
+    --r-card: 16px;
+    --r-sm: 10px;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body {
+    font-family:'Jost',sans-serif;
+    background:var(--warm-white);
+    color:var(--charcoal);
+    font-weight:300;
+    font-size:17px;
+    overflow-x:hidden;
+  }
+
+  /* ── PRELOADER ── */
+  #preloader {
+    position:fixed; inset:0; z-index:9999;
+    background:var(--charcoal);
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:24px;
+    transition:opacity 0.7s ease, visibility 0.7s ease;
+  }
+  #preloader.hidden { opacity:0; visibility:hidden; pointer-events:none; }
+  .pl-logo {
+    font-family:'Cormorant Garamond',serif;
+    font-size:38px; font-weight:300; letter-spacing:6px; color:white;
+    opacity:0; animation:plFade 0.8s ease 0.3s forwards;
+  }
+  .pl-logo span { color:var(--gold); }
+  .pl-bar {
+    width:160px; height:1px; background:rgba(255,255,255,0.12); border-radius:1px; overflow:hidden;
+    opacity:0; animation:plFade 0.5s ease 0.6s forwards;
+  }
+  .pl-fill { height:100%; width:0; background:var(--gold); animation:plLoad 1.9s cubic-bezier(0.4,0,0.2,1) 0.8s forwards; }
+  .pl-sub {
+    font-size:11px; letter-spacing:4px; text-transform:uppercase; color:rgba(255,255,255,0.32);
+    opacity:0; animation:plFade 0.5s ease 1s forwards;
+  }
+  @keyframes plFade { to { opacity:1; } }
+  @keyframes plLoad { to { width:100%; } }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity:0; transform:translateY(38px);
+    transition:opacity 0.75s cubic-bezier(0.25,0.46,0.45,0.94), transform 0.75s cubic-bezier(0.25,0.46,0.45,0.94);
+  }
+  .reveal.visible { opacity:1; transform:translateY(0); }
+  .d1 { transition-delay:0.1s; }
+  .d2 { transition-delay:0.2s; }
+  .d3 { transition-delay:0.3s; }
+  .d4 { transition-delay:0.4s; }
+
+  /* ── NAV ── */
+  nav {
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:22px 64px;
+    background:rgba(250,247,242,0.94);
+    backdrop-filter:blur(16px);
+    border-bottom:1px solid rgba(201,168,76,0.18);
+    transition:padding 0.3s ease, box-shadow 0.3s ease;
+  }
+  nav.scrolled { padding:14px 64px; box-shadow:0 4px 28px rgba(0,0,0,0.07); }
+  .nav-logo {
+    font-family:'Cormorant Garamond',serif;
+    font-size:24px; font-weight:600; letter-spacing:2px;
+    color:var(--charcoal); text-decoration:none; transition:opacity 0.2s;
+  }
+  .nav-logo:hover { opacity:0.72; }
+  .nav-logo span { color:var(--gold); }
+  .nav-links { display:flex; gap:36px; list-style:none; }
+  .nav-links a {
+    text-decoration:none; font-size:13px; letter-spacing:2px;
+    text-transform:uppercase; color:var(--stone);
+    position:relative; transition:color 0.25s;
+  }
+  .nav-links a::after {
+    content:''; position:absolute; bottom:-3px; left:0; right:0;
+    height:1px; background:var(--gold);
+    transform:scaleX(0); transform-origin:center; transition:transform 0.3s ease;
+  }
+  .nav-links a:hover { color:var(--gold); }
+  .nav-links a:hover::after { transform:scaleX(1); }
+  .nav-book {
+    background:var(--gold); color:white;
+    padding:11px 26px; font-size:12px; letter-spacing:2px; text-transform:uppercase;
+    border:none; cursor:pointer; border-radius:var(--r-sm);
+    font-family:'Jost',sans-serif; text-decoration:none;
+    transition:background 0.25s, transform 0.2s;
+  }
+  .nav-book:hover { background:var(--gold-dark); transform:translateY(-1px); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height:100vh; background:var(--charcoal);
+    position:relative; display:flex; align-items:center; justify-content:center; overflow:hidden;
+  }
+  .hero-bg {
+    position:absolute; inset:0;
+    background:
+      linear-gradient(160deg, rgba(30,20,0,0.68) 0%, rgba(10,10,10,0.48) 100%),
+      url('https://images.unsplash.com/photo-1590490360182-c33d57733427?w=1600&q=80') center/cover no-repeat;
+    transform:scale(1.05); animation:heroZoom 8s ease forwards;
+  }
+  @keyframes heroZoom { to { transform:scale(1); } }
+  .hero-overlay {
+    position:absolute; inset:0;
+    background:radial-gradient(ellipse at center, transparent 30%, rgba(10,8,3,0.55) 100%);
+  }
+  .hero-content { position:relative; text-align:center; padding:0 24px; }
+  .hero-badge {
+    display:inline-block; border:1px solid var(--gold-light); color:var(--gold-light);
+    font-size:11px; letter-spacing:4px; text-transform:uppercase;
+    padding:8px 22px; margin-bottom:30px; border-radius:4px;
+    opacity:0; animation:fadeUp 0.9s ease 0.6s forwards;
+  }
+  .hero h1 {
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(58px,8.5vw,106px);
+    font-weight:300; color:white; line-height:1; letter-spacing:4px; margin-bottom:12px;
+    opacity:0; animation:fadeUp 1s ease 0.85s forwards;
+  }
+  .hero h1 em { color:var(--gold-light); font-style:italic; }
+  .hero-sub {
+    font-size:14px; letter-spacing:4px; color:rgba(255,255,255,0.5);
+    text-transform:uppercase; margin-bottom:52px;
+    opacity:0; animation:fadeUp 0.9s ease 1.1s forwards;
+  }
+  .hero-cta {
+    display:inline-flex; gap:16px; flex-wrap:wrap; justify-content:center;
+    opacity:0; animation:fadeUp 0.9s ease 1.3s forwards;
+  }
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(28px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+  .btn-primary {
+    background:var(--gold); color:white;
+    padding:15px 38px; font-size:12px; letter-spacing:2px; text-transform:uppercase;
+    text-decoration:none; font-family:'Jost',sans-serif; border-radius:var(--r-sm);
+    transition:background 0.25s, transform 0.2s, box-shadow 0.25s;
+  }
+  .btn-primary:hover { background:var(--gold-dark); transform:translateY(-2px); box-shadow:0 8px 24px rgba(201,168,76,0.38); }
+  .btn-outline {
+    border:1px solid rgba(255,255,255,0.42); color:white;
+    padding:15px 38px; font-size:12px; letter-spacing:2px; text-transform:uppercase;
+    text-decoration:none; font-family:'Jost',sans-serif; background:transparent;
+    border-radius:var(--r-sm); transition:all 0.25s;
+  }
+  .btn-outline:hover { border-color:var(--gold-light); color:var(--gold-light); transform:translateY(-2px); }
+  .hero-scroll {
+    position:absolute; bottom:40px; left:50%; transform:translateX(-50%);
+    display:flex; flex-direction:column; align-items:center; gap:10px;
+    color:rgba(255,255,255,0.36); font-size:11px; letter-spacing:3px; text-transform:uppercase;
+    opacity:0; animation:fadeUp 0.8s ease 2s forwards;
+  }
+  .hero-scroll.bouncing { animation:heroBounce 2.2s ease-in-out infinite; }
+  @keyframes heroBounce {
+    0%,100%{ transform:translateX(-50%) translateY(0); }
+    50%    { transform:translateX(-50%) translateY(7px); }
+  }
+  .scroll-line {
+    width:1px; height:44px;
+    background:linear-gradient(to bottom, transparent, rgba(255,255,255,0.28));
+  }
+
+  /* ── DIVIDER ── */
+  .divider { display:flex; align-items:center; gap:20px; margin:0 auto; max-width:220px; }
+  .divider-line { flex:1; height:1px; background:var(--gold-light); }
+  .divider-diamond { width:9px; height:9px; background:var(--gold); transform:rotate(45deg); flex-shrink:0; }
+
+  /* ── SECTION COMMON ── */
+  section { padding:110px 68px; }
+  .section-label {
+    font-size:11px; letter-spacing:4px; text-transform:uppercase;
+    color:var(--gold); margin-bottom:18px; display:block;
+  }
+  .section-title {
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(40px,4.5vw,64px);
+    font-weight:300; line-height:1.1; color:var(--charcoal);
+  }
+  .section-title em { font-style:italic; color:var(--gold-dark); }
+
+  /* ── ABOUT ── */
+  .about {
+    background:var(--ivory);
+    display:grid; grid-template-columns:1fr 1fr; gap:88px; align-items:center;
+  }
+  .about-text p { font-size:17px; line-height:1.95; color:var(--stone); margin-top:26px; }
+  .about-stats {
+    display:grid; grid-template-columns:1fr 1fr; gap:1px;
+    margin-top:52px; border:1px solid var(--mist); background:var(--mist);
+    border-radius:var(--r-card); overflow:hidden;
+  }
+  .stat { background:var(--ivory); padding:30px; text-align:center; transition:background 0.3s; }
+  .stat:hover { background:white; }
+  .stat-num { font-family:'Cormorant Garamond',serif; font-size:46px; font-weight:300; color:var(--gold); display:block; line-height:1; }
+  .stat-label { font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--stone); margin-top:8px; display:block; }
+  .about-image { position:relative; }
+  .about-img-main {
+    width:100%; height:520px; object-fit:cover; display:block;
+    border-radius:var(--r-img); transition:transform 0.6s ease;
+  }
+  .about-image:hover .about-img-main { transform:scale(1.02); }
+  .about-img-accent {
+    position:absolute; bottom:-28px; left:-28px;
+    width:190px; height:230px; object-fit:cover;
+    border:6px solid var(--ivory); border-radius:var(--r-sm);
+    box-shadow:0 12px 40px rgba(0,0,0,0.14);
+  }
+  .about-gold-frame {
+    position:absolute; top:-16px; right:-16px;
+    width:80px; height:80px;
+    border-top:2px solid var(--gold); border-right:2px solid var(--gold);
+    border-radius:0 var(--r-sm) 0 0;
+  }
+
+  /* ── ROOMS ── */
+  .rooms { background:var(--warm-white); text-align:center; }
+  .rooms-intro { max-width:640px; margin:0 auto 64px; }
+  .rooms-intro p { font-size:17px; line-height:1.85; color:var(--stone); margin-top:22px; }
+  .rooms-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:28px; margin-top:64px; }
+  .room-card {
+    text-align:left; background:white; border-radius:var(--r-card); overflow:hidden;
+    box-shadow:0 4px 24px rgba(0,0,0,0.06);
+    transition:transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  .room-card:hover { transform:translateY(-7px); box-shadow:0 18px 52px rgba(0,0,0,0.13); }
+  .room-card:hover .room-img { transform:scale(1.07); }
+  .room-img-wrap { overflow:hidden; height:290px; border-radius:var(--r-card) var(--r-card) 0 0; }
+  .room-img {
+    width:100%; height:100%; object-fit:cover; display:block;
+    transition:transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
+  }
+  .room-card-body { padding:24px 26px 30px; }
+  .room-type { font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:10px; display:block; }
+  .room-name { font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:400; color:var(--charcoal); margin-bottom:12px; }
+  .room-desc { font-size:15px; line-height:1.78; color:var(--stone); margin-bottom:18px; }
+  .room-price { font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--gold-dark); }
+  .room-price span { font-size:13px; font-family:'Jost',sans-serif; color:var(--stone); font-weight:300; }
+
+  /* ── AMENITIES ── */
+  .amenities { background:var(--charcoal); color:white; }
+  .amenities .section-title { color:white; }
+  .amenities .section-label { color:var(--gold-light); }
+  .amenities-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; margin-top:64px; }
+  .amenity {
+    text-align:center; padding:40px 22px;
+    border:1px solid rgba(201,168,76,0.18); border-radius:var(--r-card);
+    transition:border-color 0.35s, transform 0.35s, background 0.35s;
+  }
+  .amenity:hover { border-color:var(--gold); transform:translateY(-5px); background:rgba(201,168,76,0.06); }
+  .amenity-icon { font-size:36px; margin-bottom:18px; display:block; }
+  .amenity-name { font-size:12px; letter-spacing:2px; text-transform:uppercase; color:var(--gold-light); margin-bottom:12px; display:block; }
+  .amenity-desc { font-size:14px; line-height:1.7; color:rgba(255,255,255,0.5); }
+
+  /* ── BANQUET ── */
+  .banquet { background:var(--ivory); display:grid; grid-template-columns:1fr 1fr; align-items:stretch; }
+  .banquet-image { height:620px; overflow:hidden; }
+  .banquet-image img {
+    width:100%; height:100%; object-fit:cover;
+    border-radius:0 var(--r-img) var(--r-img) 0;
+    transition:transform 0.7s ease;
+  }
+  .banquet-image:hover img { transform:scale(1.04); }
+  .banquet-content { padding:84px 64px; display:flex; flex-direction:column; justify-content:center; }
+  .banquet-content p { font-size:17px; line-height:1.95; color:var(--stone); margin-top:26px; margin-bottom:34px; }
+  .banquet-features { list-style:none; margin-top:26px; }
+  .banquet-features li {
+    font-size:15px; color:var(--stone);
+    padding:12px 0; border-bottom:1px solid rgba(0,0,0,0.07);
+    display:flex; align-items:center; gap:14px; transition:color 0.2s;
+  }
+  .banquet-features li:hover { color:var(--charcoal); }
+  .banquet-features li::before { content:''; width:7px; height:7px; background:var(--gold); transform:rotate(45deg); flex-shrink:0; border-radius:1px; }
+
+  /* ── GALLERY ── */
+  .gallery { background:var(--warm-white); padding-bottom:0; }
+  .gallery-header { text-align:center; margin-bottom:60px; }
+  .gallery-grid {
+    display:grid; grid-template-columns:repeat(4,1fr); grid-template-rows:300px 300px;
+    gap:12px; padding:0 12px 12px;
+  }
+  .gallery-item { overflow:hidden; position:relative; border-radius:var(--r-img); }
+  .gallery-item:first-child { grid-column:span 2; grid-row:span 2; }
+  .gallery-item img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.65s cubic-bezier(0.25,0.46,0.45,0.94); }
+  .gallery-item::after {
+    content:''; position:absolute; inset:0;
+    background:rgba(0,0,0,0); border-radius:var(--r-img); transition:background 0.4s;
+  }
+  .gallery-item:hover img { transform:scale(1.08); }
+  .gallery-item:hover::after { background:rgba(0,0,0,0.1); }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials { background:var(--ivory); text-align:center; }
+  .testimonials-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:28px; margin-top:64px; }
+  .testimonial {
+    background:white; padding:38px 36px;
+    border-radius:var(--r-card); border-bottom:3px solid var(--gold);
+    box-shadow:0 4px 20px rgba(0,0,0,0.05);
+    transition:transform 0.35s ease, box-shadow 0.35s ease;
+  }
+  .testimonial:hover { transform:translateY(-5px); box-shadow:0 16px 44px rgba(0,0,0,0.1); }
+  .stars { color:var(--gold); font-size:17px; margin-bottom:18px; }
+  .testimonial-text {
+    font-family:'Cormorant Garamond',serif;
+    font-size:20px; font-style:italic; font-weight:300;
+    line-height:1.78; color:var(--stone); margin-bottom:22px;
+  }
+  .testimonial-author { font-size:12px; letter-spacing:2px; text-transform:uppercase; color:var(--gold-dark); }
+
+  /* ── LOCATION ── */
+  .location { background:var(--charcoal); color:white; display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:80px; }
+  .location .section-title { color:white; }
+  .location .section-label { color:var(--gold-light); }
+  .location > div > p { font-size:17px; line-height:1.95; color:rgba(255,255,255,0.6); margin-top:22px; }
+  .location-details { margin-top:42px; }
+  .location-detail {
+    display:flex; align-items:flex-start; gap:18px;
+    padding:18px 0; border-bottom:1px solid rgba(255,255,255,0.08);
+    transition:padding-left 0.3s ease;
+  }
+  .location-detail:hover { padding-left:5px; }
+  .location-detail-icon { color:var(--gold); font-size:20px; margin-top:2px; }
+  .location-detail-text { font-size:15px; color:rgba(255,255,255,0.65); line-height:1.65; }
+  .location-detail-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold-light); display:block; margin-bottom:5px; }
+  .map-placeholder {
+    height:420px; background:#2a2720;
+    border:1px solid rgba(201,168,76,0.2); border-radius:var(--r-img);
+    display:flex; align-items:center; justify-content:center;
+    flex-direction:column; gap:16px; color:rgba(255,255,255,0.4);
+    font-size:14px; text-align:center; transition:border-color 0.3s;
+  }
+  .map-placeholder:hover { border-color:rgba(201,168,76,0.5); }
+  .map-placeholder a {
+    margin-top:14px; display:inline-block; color:var(--gold);
+    font-size:12px; letter-spacing:2px; text-transform:uppercase; text-decoration:none;
+    border:1px solid var(--gold); padding:12px 28px; border-radius:var(--r-sm);
+    transition:all 0.25s;
+  }
+  .map-placeholder a:hover { background:var(--gold); color:white; transform:translateY(-2px); }
+
+  /* ── BOOKING CTA ── */
+  .booking-cta { padding:110px 68px; text-align:center; background:var(--warm-white); position:relative; overflow:hidden; }
+  .booking-cta::before { content:'✦'; position:absolute; top:32px; left:50%; transform:translateX(-50%); font-size:18px; color:var(--gold-light); }
+  .booking-cta .section-title { margin:22px 0; }
+  .booking-cta > p { font-size:17px; color:var(--stone); max-width:520px; margin:0 auto 44px; line-height:1.85; }
+  .booking-form {
+    display:flex; max-width:740px; margin:0 auto; flex-wrap:wrap;
+    border-radius:var(--r-card); overflow:hidden;
+    box-shadow:0 8px 32px rgba(0,0,0,0.08);
+  }
+  .booking-form input, .booking-form select {
+    flex:1; min-width:140px; padding:16px 20px;
+    border:1px solid var(--mist); border-right:none; background:var(--ivory);
+    font-family:'Jost',sans-serif; font-size:14px; color:var(--stone);
+    outline:none; transition:border-color 0.2s, background 0.2s;
+  }
+  .booking-form input:focus, .booking-form select:focus { border-color:var(--gold); background:white; }
+  .booking-form button {
+    background:var(--gold); color:white;
+    padding:16px 34px; border:none; cursor:pointer;
+    font-family:'Jost',sans-serif; font-size:12px;
+    letter-spacing:2px; text-transform:uppercase; white-space:nowrap;
+    transition:background 0.25s;
+  }
+  .booking-form button:hover { background:var(--gold-dark); }
+  .booking-note { margin-top:26px; font-size:14px; color:#aaa; }
+  .booking-note strong { color:var(--gold-dark); }
+
+  /* ── FOOTER ── */
+  footer { background:#141210; color:rgba(255,255,255,0.5); padding:70px 68px 32px; }
+  .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:64px; margin-bottom:56px; }
+  .footer-logo { font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:600; letter-spacing:2px; color:white; margin-bottom:18px; display:block; }
+  .footer-logo span { color:var(--gold); }
+  .footer-about { font-size:14px; line-height:1.85; }
+  .footer-heading { font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--gold-light); margin-bottom:22px; display:block; }
+  .footer-links { list-style:none; }
+  .footer-links li { margin-bottom:12px; }
+  .footer-links a {
+    text-decoration:none; font-size:14px; color:rgba(255,255,255,0.5);
+    transition:color 0.25s, padding-left 0.25s; display:inline-block;
+  }
+  .footer-links a:hover { color:var(--gold-light); padding-left:4px; }
+  .footer-contact { font-size:14px; line-height:2.1; }
+  .footer-bottom { border-top:1px solid rgba(255,255,255,0.08); padding-top:26px; display:flex; justify-content:space-between; align-items:center; font-size:13px; }
+  .footer-bottom a { color:var(--gold); text-decoration:none; }
+
+  /* ── FLOATING BTN ── */
+  .float-btn {
+    position:fixed; bottom:32px; right:32px; z-index:200;
+    background:var(--gold); color:white;
+    padding:14px 28px; font-size:12px; letter-spacing:2px; text-transform:uppercase;
+    text-decoration:none; font-family:'Jost',sans-serif; border-radius:40px;
+    box-shadow:0 6px 28px rgba(201,168,76,0.4);
+    transform:translateY(90px); opacity:0;
+    transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1), opacity 0.35s ease, background 0.25s;
+  }
+  .float-btn.show { transform:translateY(0); opacity:1; }
+  .float-btn:hover { background:var(--gold-dark); transform:translateY(-3px) !important; box-shadow:0 10px 36px rgba(201,168,76,0.5); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width:960px) {
+    nav { padding:18px 24px; }
+    nav.scrolled { padding:14px 24px; }
+    .nav-links { display:none; }
+    section { padding:72px 24px; }
+    .about { grid-template-columns:1fr; gap:48px; }
+    .rooms-grid { grid-template-columns:1fr; }
+    .amenities-grid { grid-template-columns:repeat(2,1fr); }
+    .banquet { grid-template-columns:1fr; }
+    .banquet-image { height:320px; }
+    .banquet-image img { border-radius:var(--r-img); }
+    .banquet-content { padding:48px 28px; }
+    .location { grid-template-columns:1fr; }
+    .testimonials-grid { grid-template-columns:1fr; }
+    .footer-grid { grid-template-columns:1fr 1fr; gap:40px; }
+    .gallery-grid { grid-template-columns:repeat(2,1fr); grid-template-rows:auto; }
+    .gallery-item { height:200px; }
+    .gallery-item:first-child { grid-column:span 2; height:280px; }
+    .booking-form { flex-direction:column; }
+    .booking-form input, .booking-form select { border-right:1px solid var(--mist); border-bottom:none; min-width:100%; }
+    .booking-form button { border-radius:0 0 var(--r-card) var(--r-card); }
+  }
+</style>
+</head>
+<body>
+
+<!-- PRELOADER -->
+<div id="preloader">
+  <div class="pl-logo">Golden <span>Petals</span></div>
+  <div class="pl-bar"><div class="pl-fill"></div></div>
+  <div class="pl-sub">Greater Noida · Loading</div>
+</div>
+
+<!-- FLOATING BOOK -->
+<a href="#book" class="float-btn" id="floatBtn">Book Now</a>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">Golden <span>Petals</span></a>
+  <ul class="nav-links">
+    <li><a href="#rooms">Rooms</a></li>
+    <li><a href="#amenities">Amenities</a></li>
+    <li><a href="#banquet">Banquet</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#location">Location</a></li>
+  </ul>
+  <a href="#book" class="nav-book">Reserve</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Greater Noida · Gaur City 1</div>
+    <h1>Hotel <em>Golden</em><br>Petals</h1>
+    <p class="hero-sub">Where Every Stay Blooms with Luxury</p>
+    <div class="hero-cta">
+      <a href="#book" class="btn-primary">Book Your Stay</a>
+      <a href="#rooms" class="btn-outline">Explore Rooms</a>
+    </div>
+  </div>
+  <div class="hero-scroll" id="heroScroll">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-text">
+    <span class="section-label reveal">Our Story</span>
+    <h2 class="section-title reveal d1">A Sanctuary of<br><em>Warmth & Grace</em></h2>
+    <p class="reveal d2">Nestled in the heart of Gaur City 1, Greater Noida, Hotel Golden Petals is more than a place to stay — it is a retreat crafted with care. We blend contemporary comfort with the timeless warmth of Indian hospitality, creating an experience that lingers long after you leave.</p>
+    <p class="reveal d3">Whether you're here for business, leisure, or celebrating life's most cherished milestones, our dedicated team ensures every moment is nothing short of extraordinary.</p>
+    <div class="about-stats reveal d4">
+      <div class="stat"><span class="stat-num">42</span><span class="stat-label">Elegant Rooms</span></div>
+      <div class="stat"><span class="stat-num">350</span><span class="stat-label">Banquet Capacity</span></div>
+      <div class="stat"><span class="stat-num">4.1★</span><span class="stat-label">Guest Rating</span></div>
+      <div class="stat"><span class="stat-num">24/7</span><span class="stat-label">Concierge</span></div>
+    </div>
+  </div>
+  <div class="about-image reveal d2">
+    <img class="about-img-main" src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&q=80" alt="Hotel Lobby">
+    <img class="about-img-accent" src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=400&q=80" alt="Room detail">
+    <div class="about-gold-frame"></div>
+  </div>
+</section>
+
+<!-- ROOMS -->
+<section class="rooms" id="rooms">
+  <div class="rooms-intro">
+    <span class="section-label reveal">Accommodations</span>
+    <h2 class="section-title reveal d1">Rooms & <em>Suites</em></h2>
+    <p class="reveal d2">Each of our 42 thoughtfully appointed rooms is designed to be your personal haven — spacious, serene, and steeped in quiet luxury.</p>
+  </div>
+  <div class="divider reveal d3"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
+  <div class="rooms-grid">
+    <div class="room-card reveal d1">
+      <div class="room-img-wrap">
+        <img class="room-img" src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&q=80" alt="Deluxe Room">
+      </div>
+      <div class="room-card-body">
+        <span class="room-type">Standard</span>
+        <h3 class="room-name">Deluxe Room</h3>
+        <p class="room-desc">Comfortable and well-appointed rooms featuring plush bedding, modern amenities, and a serene city view. Perfect for solo travellers and couples.</p>
+        <div class="room-price">₹2,500 <span>/ night onwards</span></div>
+      </div>
+    </div>
+    <div class="room-card reveal d2">
+      <div class="room-img-wrap">
+        <img class="room-img" src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&q=80" alt="Executive Room">
+      </div>
+      <div class="room-card-body">
+        <span class="room-type">Premium</span>
+        <h3 class="room-name">Executive Room</h3>
+        <p class="room-desc">Elevated comforts with a dedicated work desk, premium toiletries, and enhanced amenities. Designed for the discerning business traveller.</p>
+        <div class="room-price">₹3,500 <span>/ night onwards</span></div>
+      </div>
+    </div>
+    <div class="room-card reveal d3">
+      <div class="room-img-wrap">
+        <img class="room-img" src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=600&q=80" alt="Suite">
+      </div>
+      <div class="room-card-body">
+        <span class="room-type">Luxury</span>
+        <h3 class="room-name">Suite</h3>
+        <p class="room-desc">Our finest accommodation — expansive living areas, premium furnishings, and personalised butler service for an unforgettable experience.</p>
+        <div class="room-price">₹5,500 <span>/ night onwards</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AMENITIES -->
+<section class="amenities" id="amenities">
+  <div style="text-align:center">
+    <span class="section-label reveal">What We Offer</span>
+    <h2 class="section-title reveal d1">World-Class <em style="color:var(--gold-light)">Amenities</em></h2>
+  </div>
+  <div class="amenities-grid">
+    <div class="amenity reveal d1"><span class="amenity-icon">🍽️</span><span class="amenity-name">In-House Restaurant</span><p class="amenity-desc">Savour authentic Indian, Chinese and Continental cuisines prepared by our talented culinary team.</p></div>
+    <div class="amenity reveal d2"><span class="amenity-icon">🅿️</span><span class="amenity-name">Free Parking</span><p class="amenity-desc">Secure, complimentary parking for all guests throughout their stay.</p></div>
+    <div class="amenity reveal d3"><span class="amenity-icon">📶</span><span class="amenity-name">High-Speed Wi-Fi</span><p class="amenity-desc">Complimentary high-speed internet access in all rooms and public areas.</p></div>
+    <div class="amenity reveal d4"><span class="amenity-icon">❄️</span><span class="amenity-name">Air Conditioning</span><p class="amenity-desc">Individual climate control in every room for your perfect comfort year round.</p></div>
+    <div class="amenity reveal d1"><span class="amenity-icon">🛎️</span><span class="amenity-name">24/7 Room Service</span><p class="amenity-desc">Round-the-clock room service with a curated menu to satisfy every craving.</p></div>
+    <div class="amenity reveal d2"><span class="amenity-icon">🧴</span><span class="amenity-name">Daily Housekeeping</span><p class="amenity-desc">Meticulous daily housekeeping with premium toiletries replenished every morning.</p></div>
+    <div class="amenity reveal d3"><span class="amenity-icon">📺</span><span class="amenity-name">LED Television</span><p class="amenity-desc">Flat-screen TVs with satellite channels in every room for your entertainment.</p></div>
+    <div class="amenity reveal d4"><span class="amenity-icon">🚖</span><span class="amenity-name">Cab Service</span><p class="amenity-desc">Convenient cab and airport pickup/drop service available on request.</p></div>
+  </div>
+</section>
+
+<!-- BANQUET -->
+<section class="banquet" id="banquet">
+  <div class="banquet-content reveal">
+    <span class="section-label">Events & Celebrations</span>
+    <h2 class="section-title">The Grand<br><em>Banquet Hall</em></h2>
+    <p>From intimate gatherings to grand celebrations, our banquet hall is the perfect canvas for your vision. With a dedicated events team, in-house catering, and state-of-the-art audio-visual equipment, every event is executed flawlessly.</p>
+    <ul class="banquet-features">
+      <li>Capacity up to 350 guests (200 seated / 350 floating)</li>
+      <li>In-house vegetarian & non-vegetarian catering</li>
+      <li>Weddings, receptions & pre-wedding functions</li>
+      <li>Corporate events, conferences & seminars</li>
+      <li>Dedicated event planning & coordination team</li>
+      <li>Full AV setup, décor & floral arrangements</li>
+      <li>Residential wedding packages available</li>
+    </ul>
+    <a href="#book" class="btn-primary" style="display:inline-block;margin-top:28px">Enquire About Events</a>
+  </div>
+  <div class="banquet-image reveal d2">
+    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&q=80" alt="Banquet Hall">
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="gallery-header">
+    <span class="section-label reveal">Visual Tour</span>
+    <h2 class="section-title reveal d1">A Glimpse of <em>Golden Petals</em></h2>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item reveal"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80" alt="Hotel"></div>
+    <div class="gallery-item reveal d1"><img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=600&q=80" alt="Room"></div>
+    <div class="gallery-item reveal d2"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80" alt="Restaurant"></div>
+    <div class="gallery-item reveal d3"><img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600&q=80" alt="Banquet"></div>
+    <div class="gallery-item reveal d4"><img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&q=80" alt="Lobby"></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="reviews">
+  <span class="section-label reveal">Guest Voices</span>
+  <h2 class="section-title reveal d1">What Our Guests <em>Say</em></h2>
+  <div class="divider reveal d2" style="margin-top:22px"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
+  <div class="testimonials-grid">
+    <div class="testimonial reveal d1">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"The staff are incredibly friendly and efficient. Rooms were spacious and comfortable — felt like home. Excellent value for money."</p>
+      <span class="testimonial-author">— Rahul M., Delhi</span>
+    </div>
+    <div class="testimonial reveal d2">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"We hosted our wedding reception here and it was absolutely perfect. The team handled every detail with such professionalism and warmth."</p>
+      <span class="testimonial-author">— Priya & Arjun S.</span>
+    </div>
+    <div class="testimonial reveal d3">
+      <div class="stars">★★★★☆</div>
+      <p class="testimonial-text">"Sleep quality was excellent — the mattresses are top notch. Great location in Gaur City. The in-house restaurant food was delicious."</p>
+      <span class="testimonial-author">— Sunita K., Noida</span>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="location" id="location">
+  <div class="reveal">
+    <span class="section-label">Find Us</span>
+    <h2 class="section-title">Perfectly <em style="color:var(--gold-light)">Located</em></h2>
+    <p>Situated in the vibrant Gaur City 1 township, Hotel Golden Petals offers easy connectivity to Greater Noida's key business districts, shopping centres, and the Delhi NCR region.</p>
+    <div class="location-details">
+      <div class="location-detail"><span class="location-detail-icon">📍</span><div class="location-detail-text"><span class="location-detail-label">Address</span>Cherry County, Gate No. 2, Near Ek Murti Chowk,<br>Gaur City 1, Greater Noida – 201318, U.P.</div></div>
+      <div class="location-detail"><span class="location-detail-icon">📞</span><div class="location-detail-text"><span class="location-detail-label">Phone</span>+91 99999 XXXXX</div></div>
+      <div class="location-detail"><span class="location-detail-icon">📸</span><div class="location-detail-text"><span class="location-detail-label">Instagram</span>@hotelgoldenpetals_gn</div></div>
+      <div class="location-detail"><span class="location-detail-icon">🕐</span><div class="location-detail-text"><span class="location-detail-label">Check-In / Check-Out</span>Check-in: 12:00 PM &nbsp;|&nbsp; Check-out: 11:00 AM</div></div>
+    </div>
+  </div>
+  <div class="map-placeholder reveal d2">
+    <div style="font-size:42px">🗺️</div>
+    <div style="font-size:17px;color:rgba(255,255,255,0.65)">Gaur City 1, Greater Noida</div>
+    <div style="font-size:13px;color:rgba(255,255,255,0.3)">Near Ek Murti Chowk, Cherry County</div>
+    <a href="https://maps.google.com/?q=Hotel+Golden+Petals+Gaur+City+Greater+Noida" target="_blank">Open in Google Maps ↗</a>
+  </div>
+</section>
+
+<!-- BOOKING CTA -->
+<section class="booking-cta" id="book">
+  <span class="section-label reveal">Reservations</span>
+  <h2 class="section-title reveal d1">Book Your <em>Stay</em></h2>
+  <p class="reveal d2">Reserve your room directly and enjoy our best rates. Our team is available 24/7 to assist you.</p>
+  <div class="booking-form reveal d3">
+    <input type="date">
+    <input type="date">
+    <select><option>1 Guest</option><option>2 Guests</option><option>3 Guests</option><option>4 Guests</option></select>
+    <button type="button">Check Availability</button>
+  </div>
+  <p class="booking-note reveal d4">Or call us directly · <strong>+91 99999 XXXXX</strong></p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <span class="footer-logo">Golden <span>Petals</span></span>
+      <p class="footer-about">A premier hotel and banquet destination in the heart of Gaur City 1, Greater Noida. Experience warmth, comfort, and gracious hospitality.</p>
+    </div>
+    <div>
+      <span class="footer-heading">Quick Links</span>
+      <ul class="footer-links">
+        <li><a href="#rooms">Rooms & Suites</a></li>
+        <li><a href="#amenities">Amenities</a></li>
+        <li><a href="#banquet">Banquet Hall</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#book">Book Now</a></li>
+      </ul>
+    </div>
+    <div>
+      <span class="footer-heading">Services</span>
+      <ul class="footer-links">
+        <li><a href="#">Wedding Packages</a></li>
+        <li><a href="#">Corporate Events</a></li>
+        <li><a href="#">Restaurant</a></li>
+        <li><a href="#">Airport Transfer</a></li>
+        <li><a href="#">Room Service</a></li>
+      </ul>
+    </div>
+    <div>
+      <span class="footer-heading">Contact</span>
+      <div class="footer-contact">
+        <p>Cherry County, Gate No. 2</p>
+        <p>Gaur City 1, Greater Noida</p>
+        <p>Uttar Pradesh – 201318</p><br>
+        <p>📸 @hotelgoldenpetals_gn</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Hotel Golden Petals. All rights reserved.</span>
+    <span>Made with ♥ for <a href="#">hotelgoldenpetals_gn</a></span>
+  </div>
+</footer>
+
+<script>
+  // Preloader — hide after 2.5s or when page fully loads
+  const preloader = document.getElementById('preloader');
+  const hidePreloader = () => {
+    setTimeout(() => preloader.classList.add('hidden'), 400);
+  };
+  if (document.readyState === 'complete') {
+    setTimeout(hidePreloader, 2200);
+  } else {
+    window.addEventListener('load', () => setTimeout(hidePreloader, 2200));
+    setTimeout(hidePreloader, 3200); // safety fallback
+  }
+
+  // Nav shrink on scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  // Floating button appear
+  const floatBtn = document.getElementById('floatBtn');
+  window.addEventListener('scroll', () => {
+    floatBtn.classList.toggle('show', window.scrollY > 380);
+  }, { passive: true });
+
+  // Hero scroll indicator starts bouncing after entry animation
+  const heroScroll = document.getElementById('heroScroll');
+  setTimeout(() => heroScroll.classList.add('bouncing'), 2600);
+
+  // Scroll reveal via IntersectionObserver
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -36px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
