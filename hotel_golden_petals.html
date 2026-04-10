@@ -1,9 +1,274 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Hotel Golden Petals</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stay Natural</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=Jost&display=swap" rel="stylesheet">
+
+<style>
+
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Jost',sans-serif;
+  background:#F5F7F6;
+  overflow-x:hidden;
+}
+
+/* CUSTOM CURSOR */
+.cursor{
+  width:20px;height:20px;
+  border:2px solid #1F3D3B;
+  border-radius:50%;
+  position:fixed;
+  pointer-events:none;
+  transform:translate(-50%,-50%);
+  transition:0.1s;
+  z-index:9999;
+}
+
+/* SIDEBAR */
+.sidebar{
+  position:fixed;
+  width:80px;height:100vh;
+  background:#1F3D3B;
+  transition:0.4s;
+  overflow:hidden;
+  z-index:1000;
+}
+.sidebar:hover{width:220px;}
+.sidebar .logo{
+  color:white;
+  text-align:center;
+  padding:20px;
+  font-size:22px;
+}
+.sidebar ul{list-style:none;}
+.sidebar ul li a{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  padding:15px;
+  color:white;
+  text-decoration:none;
+}
+.sidebar ul li a span{opacity:0;}
+.sidebar:hover span{opacity:1;}
+.sidebar ul li a:hover{background:#5DA9E9;}
+
+/* MAIN */
+.main{margin-left:80px;transition:0.4s;}
+.sidebar:hover ~ .main{margin-left:220px;}
+
+/* HERO */
+.hero{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:60px;
+  background:linear-gradient(135deg,#1F3D3B,#5DA9E9);
+  color:white;
+}
+.hero h1{
+  font-size:70px;
+  font-family:'Cormorant Garamond',serif;
+}
+.hero p{margin-top:10px;font-size:18px;}
+
+/* GALLERY */
+.gallery{
+  padding:80px 40px;
+}
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+}
+.gallery img{
+  width:100%;
+  transition:0.5s;
+  border-radius:10px;
+}
+.gallery img:hover{transform:scale(1.08);}
+
+/* ROOMS */
+.rooms{
+  padding:80px 40px;
+}
+.room-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+.card{
+  background:white;
+  padding:10px;
+  border-radius:12px;
+  transition:0.3s;
+}
+.card:hover{
+  transform:translateY(-10px);
+}
+.card img{width:100%;border-radius:10px;}
+
+/* AMENITIES */
+.amenities{
+  padding:80px 40px;
+  background:#e8f1ef;
+}
+.amenity-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:20px;
+}
+.amenity-grid div{
+  background:white;
+  padding:20px;
+  border-radius:10px;
+}
+
+/* CONTACT */
+.contact{
+  padding:80px 40px;
+}
+form{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  max-width:400px;
+}
+input,textarea{
+  padding:12px;
+  border-radius:6px;
+  border:1px solid #ddd;
+}
+button{
+  padding:12px;
+  background:#1F3D3B;
+  color:white;
+  border:none;
+  cursor:pointer;
+}
+
+/* WHATSAPP */
+.whatsapp{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  padding:15px 20px;
+  border-radius:30px;
+  color:white;
+  text-decoration:none;
+}
+
+</style>
 </head>
+
 <body>
-    <h1>Welcome to Hotel Golden Petals</h1>
-    <p>Experience luxury and elegance</p>
+
+<div class="cursor"></div>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <div class="logo">GP</div>
+  <ul>
+    <li><a href="#home">🏠 <span>Home</span></a></li>
+    <li><a href="#gallery">🖼️ <span>Gallery</span></a></li>
+    <li><a href="#rooms">🛏️ <span>Rooms</span></a></li>
+    <li><a href="#amenities">✨ <span>Amenities</span></a></li>
+    <li><a href="#contact">📞 <span>Contact</span></a></li>
+  </ul>
+</div>
+
+<div class="main">
+
+<section id="home" class="hero">
+  <h1>Stay Natural</h1>
+  <p>Premium minimal experience</p>
+</section>
+
+<section id="gallery" class="gallery">
+  <h2>Gallery</h2>
+  <div class="gallery-grid">
+    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945">
+    <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa">
+    <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427">
+  </div>
+</section>
+
+<section id="rooms" class="rooms">
+  <h2>Rooms</h2>
+  <div class="room-grid">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304">
+      <h3>Deluxe</h3>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b">
+      <h3>Executive</h3>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427">
+      <h3>Suite</h3>
+    </div>
+  </div>
+</section>
+
+<section id="amenities" class="amenities">
+  <h2>Amenities</h2>
+  <div class="amenity-grid">
+    <div>WiFi</div>
+    <div>Parking</div>
+    <div>AC</div>
+    <div>Room Service</div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <h2>Contact</h2>
+  <form onsubmit="sendWhatsApp(event)">
+    <input type="text" id="name" placeholder="Name" required>
+    <input type="tel" id="phone" placeholder="Phone" required>
+    <textarea id="msg" placeholder="Message"></textarea>
+    <button>Send</button>
+  </form>
+</section>
+
+</div>
+
+<a href="https://wa.me/91XXXXXXXXXX" class="whatsapp">Book</a>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+<script>
+
+// CURSOR
+const cursor = document.querySelector(".cursor");
+document.addEventListener("mousemove", e=>{
+  cursor.style.top=e.clientY+"px";
+  cursor.style.left=e.clientX+"px";
+});
+
+// GSAP ANIMATIONS
+gsap.from("h1",{y:80,opacity:0,duration:1});
+gsap.from("section",{opacity:0,y:50,stagger:0.3});
+
+// WHATSAPP FORM
+function sendWhatsApp(e){
+  e.preventDefault();
+  let name=document.getElementById("name").value;
+  let phone=document.getElementById("phone").value;
+  let msg=document.getElementById("msg").value;
+
+  let url=`https://wa.me/91XXXXXXXXXX?text=Name:${name}%0APhone:${phone}%0AMessage:${msg}`;
+  window.open(url,"_blank");
+}
+
+</script>
+
 </body>
 </html>
