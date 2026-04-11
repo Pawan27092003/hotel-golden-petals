@@ -1,0 +1,40 @@
+body {
+  margin: 0;
+  font-family: Arial;
+}
+
+header {
+  background: black;
+  color: gold;
+  text-align: center;
+  padding: 20px;
+}
+
+.hero {
+  height: 60vh;
+  background: url('images/hero.jpg') center/cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.btn {
+  background: gold;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: black;
+  margin-top: 10px;
+}
+
+.gallery .images {
+  display: flex;
+  gap: 10px;
+  padding: 20px;
+}
+
+.gallery img {
+  width: 30%;
+  border-radius: 10px;
+}
