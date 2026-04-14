@@ -395,8 +395,37 @@ section { padding:110px 68px; }
 }
 
 @media (max-width:960px) {
-  nav { padding:16px 20px; }
-  .nav-links { display:none; }
+  nav {
+    padding:14px 14px;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+  .nav-logo {
+    font-size:20px;
+    letter-spacing:1px;
+    flex:1 1 auto;
+  }
+  .nav-links {
+    display:flex;
+    order:3;
+    width:100%;
+    justify-content:space-between;
+    gap:10px;
+    margin-top:8px;
+    padding-top:8px;
+    border-top:1px solid rgba(47,158,68,0.18);
+  }
+  .nav-links a {
+    font-size:11px;
+    letter-spacing:1.1px;
+    white-space:nowrap;
+  }
+  .nav-book {
+    padding:9px 12px;
+    font-size:10px;
+    letter-spacing:1.1px;
+    white-space:nowrap;
+  }
   section { padding:72px 24px; }
   .about { grid-template-columns:1fr; gap:42px; }
   .about-image-stack {
