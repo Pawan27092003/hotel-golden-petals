@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Celebrations — Hotel Golden Petals</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="preloader">
+    <div class="pl-logo">Golden <span>Petals</span></div>
+    <div class="pl-bar"><div class="pl-fill"></div></div>
+    <div class="pl-sub">Celebrations · Loading</div>
+  </div>
+
+  <a href="https://wa.me/919315319700?text=Hi%20Hotel%20Golden%20Petals%2C%20I%20want%20to%20book%20via%20WhatsApp%20for%20celebrations." class="whatsapp-btn" id="whatsappBtn" target="_blank" rel="noopener noreferrer" aria-label="Book now on WhatsApp">Book Now on WhatsApp</a>
+
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">Golden <span>Petals</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#rooms">Rooms</a></li>
+      <li><a href="celebrations.html">Celebrations</a></li>
+      <li><a href="cottage.html">Cottage</a></li>
+    </ul>
+    <a href="#celebrationEnquiry" class="nav-book">Enquire</a>
+  </nav>
+
+  <section class="hero" id="home">
+    <div class="hero-bg" style="background:linear-gradient(160deg, rgba(10,50,24,0.64) 0%, rgba(10,10,10,0.52) 100%), url('photos/Dropped Image (23).png') center/cover no-repeat;"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge">Weddings · Parties · Events</div>
+      <h1><em>Grand</em><br />Celebrations</h1>
+      <p class="hero-sub">Choose your celebration style and send one enquiry</p>
+      <div class="hero-cta">
+        <a href="#celebrationDeck" class="btn-primary">Explore Deck</a>
+        <a href="#celebrationEnquiry" class="btn-outline">Enquire Now</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="functions celebrations-page" id="celebrationDeck">
+    <div class="functions-intro">
+      <span class="section-label reveal">Celebration Options</span>
+      <h2 class="section-title reveal d1">Weddings, Parties & <em style="color:var(--gold-light)">Events</em></h2>
+      <p class="reveal d2">Click one vertical deck card to highlight your preferred celebration.</p>
+    </div>
+
+    <div class="celebration-vertical-deck">
+      <article class="celebration-v-card reveal d1 active" data-celebration="Wedding">
+        <img src="photos/Dropped Image (11).png" alt="Weddings" class="celebration-v-img" />
+        <div class="celebration-v-overlay">
+          <span class="function-type">Premium</span>
+          <h3 class="function-name">Weddings</h3>
+        </div>
+      </article>
+
+      <article class="celebration-v-card reveal d2" data-celebration="Party">
+        <img src="photos/Dropped Image (12).png" alt="Parties" class="celebration-v-img" />
+        <div class="celebration-v-overlay">
+          <span class="function-type">Social</span>
+          <h3 class="function-name">Parties</h3>
+        </div>
+      </article>
+
+      <article class="celebration-v-card reveal d3" data-celebration="Event">
+        <img src="photos/Dropped Image (13).png" alt="Events" class="celebration-v-img" />
+        <div class="celebration-v-overlay">
+          <span class="function-type">Corporate & Private</span>
+          <h3 class="function-name">Events</h3>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="booking-cta" id="celebrationEnquiry">
+    <span class="section-label reveal">Single Enquiry</span>
+    <h2 class="section-title reveal d1">Send Your <em>Celebration Request</em></h2>
+    <p class="reveal d2">One form for Weddings, Parties, and Events.</p>
+    <form class="booking-form reveal d3" id="celebrationForm">
+      <select id="celebrationType" required>
+        <option value="">Select Celebration Type</option>
+        <option>Wedding</option>
+        <option>Party</option>
+        <option>Event</option>
+      </select>
+      <input id="celebrationDate" type="date" required />
+      <input id="celebrationGuests" type="number" min="10" max="1000" placeholder="Expected Guests" required />
+      <input id="celebrationContact" type="tel" placeholder="Contact Number" required />
+      <button type="submit">Enquire Now</button>
+    </form>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

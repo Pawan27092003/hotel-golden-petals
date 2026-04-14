@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Enquire — Hotel Golden Petals</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="preloader">
+    <div class="pl-logo">Golden <span>Petals</span></div>
+    <div class="pl-bar"><div class="pl-fill"></div></div>
+    <div class="pl-sub">Enquiry · Loading</div>
+  </div>
+
+  <a href="https://wa.me/919315319700?text=Hi%20Hotel%20Golden%20Petals%2C%20I%20want%20to%20book%20via%20WhatsApp." class="whatsapp-btn" id="whatsappBtn" target="_blank" rel="noopener noreferrer" aria-label="Book now on WhatsApp">Book Now on WhatsApp</a>
+
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">Golden <span>Petals</span></a>
+    <ul class="nav-links">
+      <li><a href="rooms.html">Rooms</a></li>
+      <li><a href="celebrations.html">Celebrations</a></li>
+      <li><a href="cottage.html">Cottage</a></li>
+    </ul>
+    <a href="#enquiryForm" class="nav-book">Enquire</a>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-bg" style="background:linear-gradient(160deg, rgba(9,40,18,0.66) 0%, rgba(10,10,10,0.52) 100%), url('photos/Dropped Image (25).png') center/cover no-repeat;"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge">Single Enquiry</div>
+      <h1>Let's Plan Your <em>Celebration</em></h1>
+      <p class="hero-sub">Share your details and our team will contact you quickly</p>
+      <div class="hero-cta">
+        <a href="#enquiryForm" class="btn-primary">Open Enquiry Form</a>
+        <a href="celebrations.html" class="btn-outline">Back to Celebrations</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="booking-cta" id="enquiryForm">
+    <span class="section-label reveal">Enquiry Form</span>
+    <h2 class="section-title reveal d1">Tell Us Your <em>Requirements</em></h2>
+    <p class="reveal d2">Use this form for weddings, parties, events, and custom requests.</p>
+    <form class="booking-form reveal d3" id="enquirePageForm">
+      <select id="enquireType" required>
+        <option value="">Select Enquiry Type</option>
+        <option>Wedding</option>
+        <option>Party</option>
+        <option>Event</option>
+        <option>Room Booking</option>
+        <option>Other</option>
+      </select>
+      <input id="enquireDate" type="date" required />
+      <input id="enquireGuests" type="number" min="1" max="2000" placeholder="Expected Guests" required />
+      <input id="enquirePhone" type="tel" placeholder="Contact Number" required />
+      <button type="submit">Submit Enquiry</button>
+    </form>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

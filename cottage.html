@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cottage — Hotel Golden Petals</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="preloader">
+    <div class="pl-logo">Golden <span>Petals</span></div>
+    <div class="pl-bar"><div class="pl-fill"></div></div>
+    <div class="pl-sub">Cottage · Loading</div>
+  </div>
+
+  <a href="https://wa.me/919315319700?text=Hi%20Hotel%20Golden%20Petals%2C%20I%20want%20to%20reserve%20a%20cottage." class="whatsapp-btn" id="whatsappBtn" target="_blank" rel="noopener noreferrer" aria-label="Book now on WhatsApp">Book Now on WhatsApp</a>
+
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">Golden <span>Petals</span></a>
+    <ul class="nav-links">
+      <li><a href="rooms.html">Rooms</a></li>
+      <li><a href="celebrations.html">Celebrations</a></li>
+      <li><a href="cottage.html">Cottage</a></li>
+    </ul>
+    <a href="#cottageForm" class="nav-book">Cottage</a>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-bg" style="background:linear-gradient(160deg, rgba(8,38,18,0.66) 0%, rgba(10,10,10,0.54) 100%), url('photos/Dropped Image (24).png') center/cover no-repeat;"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge">Private Cottage Booking</div>
+      <h1>Reserve Your <em>Cottage</em></h1>
+      <p class="hero-sub">Fast reservation with best available rates</p>
+      <div class="hero-cta">
+        <a href="#cottageForm" class="btn-primary">Open Form</a>
+        <a href="rooms.html" class="btn-outline">View Rooms</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="booking-cta" id="cottageForm">
+    <span class="section-label reveal">Cottage Form</span>
+    <h2 class="section-title reveal d1">Complete Your <em>Cottage Booking</em></h2>
+    <p class="reveal d2">Fill the details and our team will confirm your cottage reservation shortly.</p>
+    <form class="booking-form reveal d3" id="reservePageForm">
+      <input id="reserveCheckIn" type="date" required />
+      <input id="reserveCheckOut" type="date" required />
+      <select id="reserveGuests" required>
+        <option value="">Select Guests</option>
+        <option>1 Guest</option>
+        <option>2 Guests</option>
+        <option>3 Guests</option>
+        <option>4 Guests</option>
+      </select>
+      <input id="reservePhone" type="tel" placeholder="Contact Number" required />
+      <button type="submit">Check Availability</button>
+    </form>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
