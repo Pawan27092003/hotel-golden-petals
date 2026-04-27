@@ -19,20 +19,33 @@
 
   <nav id="navbar">
     <a href="#" class="nav-logo">Golden <span>Petals</span></a>
-    <ul class="nav-links">
-      <li><a href="#rooms">Rooms</a></li>
-      <li><a href="celebrations.html">Celebrations</a></li>
-      <li><a href="cottage.html">Cottage</a></li>
-    </ul>
-    <a href="enquire.html" class="nav-book">Enquire</a>
+    
+    <div class="nav-menu" id="navMenu">
+      <ul class="nav-links">
+        <li><a href="#rooms" class="nav-link">Rooms</a></li>
+        <li><a href="celebrations.html" class="nav-link">Celebrations</a></li>
+        <li><a href="cottage.html" class="nav-link">Cottage</a></li>
+      </ul>
+      <a href="enquire.html" class="nav-book mobile-only">Enquire</a>
+    </div>
+
+    <div class="nav-actions">
+      <a href="enquire.html" class="nav-book desktop-only">Enquire</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    </div>
   </nav>
 
   <section class="hero" id="home">
     <div class="hero-bg"></div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <div class="hero-badge">Greater Noida · Gaur City 1</div>
-      <h1>Hotel <em>Golden</em><br />Petals</h1>
+      <div class="hero-badge"></div>
+      <h1> <em>Golden</em><br />Petals</h1>
+      <p class="hero-sub">Banquet halls | Rooftop | Resort</p>
       <p class="hero-sub">Where Every Stay Blooms with Luxury</p>
       <div class="hero-cta">
         <a href="#book" class="btn-primary">Book Your Stay</a>
