@@ -19,12 +19,24 @@
 
   <nav id="navbar">
     <a href="index.html" class="nav-logo">Golden <span>Petals</span></a>
-    <ul class="nav-links">
-      <li><a href="rooms.html">Rooms</a></li>
-      <li><a href="celebrations.html">Celebrations</a></li>
-      <li><a href="cottage.html">Cottage</a></li>
-    </ul>
-    <a href="#cottageForm" class="nav-book">Cottage</a>
+
+    <div class="nav-menu" id="navMenu">
+      <ul class="nav-links">
+        <li><a href="rooms.html" class="nav-link">Rooms</a></li>
+        <li><a href="celebrations.html" class="nav-link">Celebrations</a></li>
+        <li><a href="cottage.html" class="nav-link">Cottage</a></li>
+      </ul>
+      <a href="enquire.html" class="nav-book mobile-only">Enquire</a>
+    </div>
+
+    <div class="nav-actions">
+      <a href="enquire.html" class="nav-book desktop-only">Enquire</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    </div>
   </nav>
 
   <section class="hero">
@@ -35,9 +47,61 @@
       <h1>Reserve Your <em>Cottage</em></h1>
       <p class="hero-sub">Fast reservation with best available rates</p>
       <div class="hero-cta">
-        <a href="#cottageForm" class="btn-primary">Open Form</a>
+        <a href="#cottageRooms" class="btn-primary">View Cottages</a>
         <a href="rooms.html" class="btn-outline">View Rooms</a>
       </div>
+    </div>
+  </section>
+
+  <section class="cottage-rooms" id="cottageRooms">
+    <span class="section-label reveal">Private Cottage Rooms</span>
+    <h2 class="section-title reveal d1">Choose Your <em>Private Escape</em></h2>
+    <p class="reveal d2">Tap a cottage card to view private pool and theatre details.</p>
+
+    <div class="cottage-card-grid reveal d3">
+      <article class="cottage-flip-card" tabindex="0" aria-label="Flip Luxury Pool Cottage card">
+        <div class="cottage-flip-inner">
+          <div class="cottage-face cottage-front">
+            <div class="cottage-card-overlay">
+              <span class="room-type">Private Stay</span>
+              <h3>Luxury Pool Cottage</h3>
+              <p>Click to view details</p>
+            </div>
+          </div>
+          <div class="cottage-face cottage-back">
+            <span class="room-type">Room 1</span>
+            <h3>Luxury Pool Cottage</h3>
+            <p>Private cottage room with an attached swimming pool, personal theatre setup, premium seating, and a calm lounge-style stay experience.</p>
+            <ul>
+              <li>Private swimming pool</li>
+              <li>In-room theatre experience</li>
+              <li>Ideal for couples and private celebrations</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="cottage-flip-card" tabindex="0" aria-label="Flip Premium Theatre Cottage card">
+        <div class="cottage-flip-inner">
+          <div class="cottage-face cottage-front">
+            <div class="cottage-card-overlay">
+              <span class="room-type">Premium Stay</span>
+              <h3>Premium Theatre Cottage</h3>
+              <p>Click to view details</p>
+            </div>
+          </div>
+          <div class="cottage-face cottage-back">
+            <span class="room-type">Room 2</span>
+            <h3>Premium Theatre Cottage</h3>
+            <p>Private cottage room with its own swimming pool, theatre-style entertainment, cozy ambience, and space for a memorable luxury getaway.</p>
+            <ul>
+              <li>Private swimming pool</li>
+              <li>Theatre-style entertainment area</li>
+              <li>Perfect for birthdays and weekend stays</li>
+            </ul>
+          </div>
+        </div>
+      </article>
     </div>
   </section>
 
