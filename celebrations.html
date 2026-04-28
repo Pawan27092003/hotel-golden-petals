@@ -19,12 +19,24 @@
 
   <nav id="navbar">
     <a href="index.html" class="nav-logo">Golden <span>Petals</span></a>
-    <ul class="nav-links">
-      <li><a href="index.html#rooms">Rooms</a></li>
-      <li><a href="celebrations.html">Celebrations</a></li>
-      <li><a href="cottage.html">Cottage</a></li>
-    </ul>
-    <a href="#celebrationEnquiry" class="nav-book">Enquire</a>
+    
+    <div class="nav-menu" id="navMenu">
+      <ul class="nav-links">
+        <li><a href="rooms.html" class="nav-link">Rooms</a></li>
+        <li><a href="celebrations.html" class="nav-link">Celebrations</a></li>
+        <li><a href="cottage.html" class="nav-link">Cottage</a></li>
+      </ul>
+      <a href="enquire.html" class="nav-book mobile-only">Enquire</a>
+    </div>
+
+    <div class="nav-actions">
+      <a href="enquire.html" class="nav-book desktop-only">Enquire</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    </div>
   </nav>
 
   <section class="hero" id="home">

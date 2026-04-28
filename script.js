@@ -13,6 +13,22 @@ window.addEventListener('scroll', () => {
   navbar?.classList.toggle('scrolled', window.scrollY > 60);
 }, { passive: true });
 
+// Mobile Menu Toggle
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('navMenu');
+
+if (hamburger && navMenu) {
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navMenu.classList.toggle('active');
+  });
+
+  document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    navMenu.classList.remove('active');
+  }));
+}
+
 const whatsappBtn = document.getElementById('whatsappBtn');
 window.addEventListener('scroll', () => {
   const shouldShow = window.scrollY > 380;
@@ -88,6 +104,45 @@ celebrationForm?.addEventListener('submit', (e) => {
 
   alert(`Thank you! Your ${type} enquiry has been submitted.`);
   celebrationForm.reset();
+});
+
+const cottageCards = document.querySelectorAll('.cottage-flip-card');
+
+cottageCards.forEach((card) => {
+  const inner = card.querySelector('.cottage-flip-inner');
+
+  const flipCard = () => {
+    if (inner) inner.style.transform = '';
+    cottageCards.forEach((item) => {
+      if (item !== card) item.classList.remove('is-flipped');
+    });
+    card.classList.toggle('is-flipped');
+  };
+
+  card.addEventListener('click', (e) => {
+    if (e.target.closest('a')) return;
+    flipCard();
+  });
+
+  card.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      flipCard();
+    }
+  });
+
+  card.addEventListener('mousemove', (e) => {
+    if (!inner || card.classList.contains('is-flipped')) return;
+    const r = card.getBoundingClientRect();
+    const x = (e.clientX - r.left - r.width / 2) / 34;
+    const y = (e.clientY - r.top - r.height / 2) / 34;
+    inner.style.transform = `rotateY(${x}deg) rotateX(${-y}deg)`;
+  });
+
+  card.addEventListener('mouseleave', () => {
+    if (!inner) return;
+    inner.style.transform = '';
+  });
 });
 
 const aboutCards = document.querySelectorAll('[data-about-card]');
