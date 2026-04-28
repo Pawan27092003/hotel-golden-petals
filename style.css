@@ -601,6 +601,7 @@ section { padding:110px 68px; }
     letter-spacing:4px;
     color:var(--charcoal);
   }
+<<<<<<< HEAD
 
   .desktop-only { display:none; }
   .mobile-only { display:inline-block; margin-top:20px; font-size:14px; padding:16px 40px; }
@@ -608,6 +609,14 @@ section { padding:110px 68px; }
   section { padding:80px 24px; }
   .hero h1 { font-size:clamp(46px, 12vw, 68px); }
 
+=======
+  .nav-book {
+    padding:9px 12px;
+    font-size:10px;
+    letter-spacing:1.1px;
+    white-space:nowrap;
+  }
+>>>>>>> 50705d22ad4b84c1ce6a09a0df0f517bd26efc82
   .about { grid-template-columns:1fr; gap:42px; }
   .about-image-stack {
     min-height:360px;
