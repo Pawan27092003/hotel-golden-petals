@@ -81,7 +81,9 @@ nav.scrolled { padding:14px 64px; box-shadow:0 10px 40px rgba(0,0,0,0.08); backg
   display:flex;
   align-items:center;
   gap:36px;
-  flex:1;
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
   justify-content:center;
 }
 
@@ -601,22 +603,59 @@ section { padding:110px 68px; }
     letter-spacing:4px;
     color:var(--charcoal);
   }
-<<<<<<< HEAD
 
   .desktop-only { display:none; }
   .mobile-only { display:inline-block; margin-top:20px; font-size:14px; padding:16px 40px; }
 
+  .home-page nav {
+    flex-wrap:wrap;
+    justify-content:center;
+    row-gap:12px;
+  }
+
+  .home-page .nav-logo {
+    width:100%;
+    text-align:center;
+  }
+
+  .home-page .hamburger,
+  .home-page .mobile-only {
+    display:none;
+  }
+
+  .home-page .nav-actions {
+    display:none;
+  }
+
+  .home-page .nav-menu {
+    position:static;
+    width:100%;
+    height:auto;
+    background:transparent;
+    backdrop-filter:none;
+    -webkit-backdrop-filter:none;
+    opacity:1;
+    visibility:visible;
+    transform:none;
+    flex-direction:row;
+    justify-content:center;
+    gap:0;
+  }
+
+  .home-page .nav-links {
+    width:100%;
+    flex-direction:row;
+    justify-content:center;
+    gap:18px;
+  }
+
+  .home-page .nav-links a {
+    font-size:11px;
+    letter-spacing:1.5px;
+  }
+
   section { padding:80px 24px; }
   .hero h1 { font-size:clamp(46px, 12vw, 68px); }
-
-=======
-  .nav-book {
-    padding:9px 12px;
-    font-size:10px;
-    letter-spacing:1.1px;
-    white-space:nowrap;
-  }
->>>>>>> 50705d22ad4b84c1ce6a09a0df0f517bd26efc82
   .about { grid-template-columns:1fr; gap:42px; }
   .about-image-stack {
     min-height:360px;
