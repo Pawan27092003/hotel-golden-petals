@@ -22,25 +22,35 @@ body {
   overflow-x:hidden;
 }
 #preloader {
+  --loader-gold: #d4af37;
+  --loader-gold-light: #f7df7a;
   position:fixed; inset:0; z-index:9999;
-  background:var(--charcoal);
+  background:
+    radial-gradient(circle at center, rgba(212,175,55,0.18), transparent 34%),
+    var(--charcoal);
   display:flex; flex-direction:column; align-items:center; justify-content:center; gap:24px;
   transition:opacity 0.7s ease, visibility 0.7s ease;
 }
 #preloader.hidden { opacity:0; visibility:hidden; pointer-events:none; }
 .pl-logo {
   font-family:'Cormorant Garamond',serif;
-  font-size:38px; font-weight:300; letter-spacing:6px; color:white;
+  font-size:38px; font-weight:300; letter-spacing:6px; color:var(--loader-gold-light);
+  text-shadow:0 0 28px rgba(212,175,55,0.28);
   opacity:0; animation:plFade 0.8s ease 0.3s forwards;
 }
-.pl-logo span { color:var(--gold); }
+.pl-logo span { color:var(--loader-gold); }
 .pl-bar {
-  width:160px; height:1px; background:rgba(255,255,255,0.12); border-radius:1px; overflow:hidden;
+  width:160px; height:1px; background:rgba(212,175,55,0.22); border-radius:1px; overflow:hidden;
+  box-shadow:0 0 20px rgba(212,175,55,0.14);
   opacity:0; animation:plFade 0.5s ease 0.6s forwards;
 }
-.pl-fill { height:100%; width:0; background:var(--gold); animation:plLoad 1.9s cubic-bezier(0.4,0,0.2,1) 0.8s forwards; }
+.pl-fill {
+  height:100%; width:0;
+  background:linear-gradient(90deg, #a97814, var(--loader-gold-light), var(--loader-gold));
+  animation:plLoad 1.9s cubic-bezier(0.4,0,0.2,1) 0.8s forwards;
+}
 .pl-sub {
-  font-size:11px; letter-spacing:4px; text-transform:uppercase; color:rgba(255,255,255,0.32);
+  font-size:11px; letter-spacing:4px; text-transform:uppercase; color:rgba(247,223,122,0.66);
   opacity:0; animation:plFade 0.5s ease 1s forwards;
 }
 @keyframes plFade { to { opacity:1; } }
@@ -55,6 +65,7 @@ body {
 .d2 { transition-delay:0.2s; }
 .d3 { transition-delay:0.3s; }
 .d4 { transition-delay:0.4s; }
+.d5 { transition-delay:0.5s; }
 
 nav {
   position:fixed; top:0; left:0; right:0; z-index:100;
@@ -385,7 +396,7 @@ section { padding:110px 68px; }
 }
 
 .booking-cta { text-align:center; background:var(--warm-white); }
-.booking-form { display:flex; max-width:740px; margin:0 auto; flex-wrap:wrap; gap:12px; justify-content:center; align-items:center; }
+.booking-form { display:flex; max-width:880px; margin:0 auto; flex-wrap:wrap; gap:12px; justify-content:center; align-items:center; }
 .booking-form input, .booking-form select, .booking-form button {
   padding:14px;
   border:1px solid rgba(47,158,68,0.24);

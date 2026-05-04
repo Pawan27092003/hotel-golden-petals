@@ -173,13 +173,14 @@ reserveKeyedForm?.addEventListener('submit', async (e) => {
     keyId: formKey,
     formId: reserveKeyedForm.id,
     formKeyInput: document.getElementById('reserveFormKey')?.value || formKey,
+    roomType: document.getElementById('reserveRoomType')?.value || '',
     checkIn: document.getElementById('reserveCheckIn')?.value || '',
     checkOut: document.getElementById('reserveCheckOut')?.value || '',
     guests: document.getElementById('reserveGuests')?.value || '',
     phone: document.getElementById('reservePhone')?.value || ''
   };
 
-  if (!formData.checkIn || !formData.checkOut || !formData.guests || !formData.phone) {
+  if (!formData.roomType || !formData.checkIn || !formData.checkOut || !formData.guests || !formData.phone) {
     alert('Please fill all required reservation fields.');
     return;
   }
