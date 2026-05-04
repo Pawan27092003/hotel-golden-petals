@@ -932,12 +932,12 @@ section { padding:110px 68px; }
   }
 
   .nav-logo-lockup {
-    gap:8px;
+    gap:0;
   }
 
   .nav-logo-lockup .nav-logo-text,
   .nav-logo-lockup .nav-logo-text span {
-    display:inline;
+    display:none;
   }
 
   .nav-logo-lockup .nav-logo-mark {
@@ -955,12 +955,12 @@ section { padding:110px 68px; }
   }
 
   .home-page .nav-logo-lockup {
-    gap:8px;
+    gap:0;
   }
 
   .home-page .nav-logo-lockup .nav-logo-text,
   .home-page .nav-logo-lockup .nav-logo-text span {
-    display:inline;
+    display:none;
   }
 
   .home-page .nav-logo-lockup .nav-logo-mark {
