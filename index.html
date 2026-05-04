@@ -18,11 +18,14 @@
   <a href="https://wa.me/919315319700?text=Hi%20Hotel%20Golden%20Petals%2C%20I%20want%20to%20book%20a%20stay." class="whatsapp-btn" id="whatsappBtn" target="_blank" rel="noopener noreferrer" aria-label="Book now on WhatsApp">Book Now on WhatsApp</a>
 
   <nav id="navbar">
-    <a href="#" class="nav-logo">Golden <span>Petals</span></a>
+    <a href="index.html" class="nav-logo nav-logo-lockup" aria-label="Golden Petals home">
+      <span class="nav-logo-mark" aria-hidden="true"><img src="Images/Logo.PNG" alt="" /></span>
+      <span class="nav-logo-text">Golden <span>Petals</span></span>
+    </a>
     
     <div class="nav-menu" id="navMenu">
       <ul class="nav-links">
-        <li><a href="#rooms" class="nav-link">Rooms</a></li>
+        <li><a href="#roomsList" class="nav-link">Rooms</a></li>
         <li><a href="celebrations.html" class="nav-link">Celebrations</a></li>
         <li><a href="cottage.html" class="nav-link">Cottage</a></li>
       </ul>
@@ -42,14 +45,23 @@
   <section class="hero" id="home">
     <div class="hero-bg"></div>
     <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <div class="hero-badge"></div>
-      <h1> <em>Golden</em><br />Petals</h1>
-      <p class="hero-sub">Banquet halls | Rooftop | Resort</p>
-      <p class="hero-sub">Where Every Stay Blooms with Luxury</p>
+    <div class="hero-content home-hero-content">
+      <div class="hero-brand-lockup">
+        <span class="hero-logo-mark" aria-hidden="true"><img src="Images/Logo.PNG" alt="" /></span>
+        <span class="hero-wordmark">Golden <span>Petals</span></span>
+      </div>
+      <div class="hero-badge">Greater Noida</div>
+      <h1>Banquet Halls<br /><em>Rooftop & Resort</em></h1>
+      <p class="hero-sub">Where every stay blooms with luxury</p>
+      <div class="home-hero-highlights" aria-label="Golden Petals highlights">
+        <span>Elegant Rooms</span>
+        <span>Banquet Halls</span>
+        <span>Rooftop</span>
+        <span>Resort Stay</span>
+      </div>
       <div class="hero-cta">
         <a href="#book" class="btn-primary">Book Your Stay</a>
-        <a href="#rooms" class="btn-outline">Explore Rooms</a>
+        <a href="#roomsList" class="btn-outline">Explore Rooms</a>
       </div>
     </div>
     <div class="hero-scroll" id="heroScroll">
@@ -61,10 +73,10 @@
   <section class="about" id="about">
     <div class="about-image about-image-stack reveal d2">
       <div class="about-photo-card active" data-about-card>
-        <img class="about-img-main" src="photos/Dropped Image (2).png" alt="Hotel Lobby" />
+        <img class="about-img-main" src="Images/Hall pic.jpeg" alt="Hotel Lobby" />
       </div>
       <div class="about-photo-card" data-about-card>
-        <img class="about-img-accent" src="photos/Dropped Image (3).png" alt="Room detail" />
+        <img class="about-img-accent" src="Images/Hall pic2.jpeg" alt="Room detail" />
       </div>
       <div class="about-gold-frame"></div>
     </div>
@@ -85,12 +97,11 @@
       </div>
     </div>
   </section>
-
-  <section class="rooms" id="rooms">
+  <section class="rooms" id="roomsList">
     <div class="rooms-intro">
       <span class="section-label reveal">Accommodations</span>
-      <h2 class="section-title reveal d1">Rooms & <em>Suites</em></h2>
-      <p class="reveal d2">Choose from thoughtfully appointed rooms designed for comfort and calm.</p>
+      <h2 class="section-title reveal d1">Choose Your <em>Stay</em></h2>
+      <p class="reveal d2">All room categories available with modern amenities and warm service.</p>
     </div>
     <div class="rooms-grid">
       <div class="room-card reveal d1">
@@ -99,38 +110,47 @@
           <span class="room-type">Standard</span>
           <h3 class="room-name">Deluxe Room</h3>
           <p class="room-desc">Comfortable and well-appointed for solo travelers and couples.</p>
-          <div class="room-price">₹2,500 <span>/ night onwards</span></div>
+          <div class="room-price">₹2,499 <span>/ night onwards</span></div>
         </div>
       </div>
       <div class="room-card reveal d2">
         <div class="room-img-wrap"><img class="room-img" src="Images/Dropped Image (13).png" alt="Executive Room" /></div>
         <div class="room-card-body">
           <span class="room-type">Premium</span>
-          <h3 class="room-name">Executive Room</h3>
+          <h3 class="room-name"> Super Deluxe Room</h3>
           <p class="room-desc">Elevated comfort with enhanced amenities and workspace.</p>
-          <div class="room-price">₹4,500 <span>/ night onwards</span></div>
+          <div class="room-price">₹2,999 <span>/ night onwards</span></div>
         </div>
       </div>
       <div class="room-card reveal d3">
+        <div class="room-img-wrap"><img class="room-img" src="" alt="Executive Room" /></div>
+        <div class="room-card-body">
+          <span class="room-type">Premium</span>
+          <h3 class="room-name"> Family Room</h3>
+          <p class="room-desc">Comfortable and spacious for families and group stays.</p>
+          <div class="room-price">₹5,499 <span>/ night onwards</span></div>
+        </div>
+      </div>
+      <div class="room-card reveal d4">
         <div class="room-img-wrap"><img class="room-img" src="Images/IMG_0878.PNG" alt="Suite" /></div>
         <div class="room-card-body">
           <span class="room-type">Luxury</span>
           <h3 class="room-name">Suite</h3>
           <p class="room-desc">Spacious and premium for guests seeking the finest stay experience.</p>
-          <div class="room-price">₹6,500 <span>/ night onwards</span></div>
+          <div class="room-price">₹7,999 <span>/ night onwards</span></div>
         </div>
       </div>
-      <div class="room-card reveal d4">
+      <div class="room-card reveal d5">
         <div class="room-img-wrap"><img class="room-img" src="photos/Dropped Image (20).png" alt="1 BHK room" /></div>
         <div class="room-card-body">
-          <span class="room-type">Apartment Stay</span>
+          <span class="room-type">Family Room</span>
           <h3 class="room-name">1 BHK</h3>
           <p class="room-desc">A private one-bedroom stay with cozy seating and essential comforts.</p>
           <div class="room-price">On request <span>/ night onwards</span></div>
         </div>
       </div>
-      <div class="room-card reveal d5">
-        <div class="room-img-wrap"><img class="room-img" src="photos/Dropped Image (13).png" alt="2 BHK room" /></div>
+      <div class="room-card reveal d6">
+        <div class="room-img-wrap"><img class="room-img" src="" alt="2 BHK room" /></div>
         <div class="room-card-body">
           <span class="room-type">Family Stay</span>
           <h3 class="room-name">2 BHK</h3>
@@ -152,7 +172,8 @@
       <select>
         <option>Select Room</option>
         <option>Deluxe Room</option>
-        <option>Executive Room</option>
+        <option>Super Deluxe Room</option>
+        <option>Family Room</option>
         <option>Suite</option>
         <option>1 BHK</option>
         <option>2 BHK</option>
